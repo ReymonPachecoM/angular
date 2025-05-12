@@ -1,0 +1,57 @@
+<h2 class="text-center mb-4">Registrar Persona</h2>
+
+<form (ngSubmit)="registrar()" #form="ngForm" class="container">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre:</label>
+    <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="persona.nombre" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido:</label>
+    <input type="text" id="apellido" class="form-control" name="apellido" [(ngModel)]="persona.apellido" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNacimiento" class="form-control" name="fechaNacimiento" [(ngModel)]="persona.fechaNacimiento" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="estado" class="form-label">Estado:</label>
+    <input type="text" id="estado" class="form-control" name="estado" [(ngModel)]="persona.estado" required>
+  </div>
+
+  <!-- Campo de sexo -->
+  <div class="mb-3">
+    <label for="sexo" class="form-label">Sexo:</label>
+    <select id="sexo" class="form-control" name="sexo" [(ngModel)]="persona.sexo" required>
+      <option value="H">Hombre</option>
+      <option value="M">Mujer</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100">Registrar</button>
+</form>
+
+<hr>
+
+<h3 class="text-center mt-5">Buscar Persona por CURP</h3>
+<form (ngSubmit)="buscarPorCurp()" class="container">
+  <div class="mb-3">
+    <label for="curpBusqueda" class="form-label">CURP:</label>
+    <input type="text" id="curpBusqueda" class="form-control" [(ngModel)]="curpBusqueda" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Buscar</button>
+</form>
+
+<!-- Mostrar los datos encontrados -->
+<div *ngIf="personaEncontrada">
+  <h4 class="mt-4">Datos Encontrados</h4>
+  <p><strong>Nombre:</strong> {{ personaEncontrada.nombre }}</p>
+  <p><strong>Apellido:</strong> {{ personaEncontrada.apellido }}</p>
+  <p><strong>Fecha de Nacimiento:</strong> {{ personaEncontrada.fechaNacimiento | date }}</p>
+  <p><strong>Estado:</strong> {{ personaEncontrada.estado }}</p>
+  <p><strong>Sexo:</strong> {{ personaEncontrada.sexo === 'H' ? 'Hombre' : 'Mujer' }}</p>
+  <p><strong>CURP:</strong> {{ personaEncontrada.curp }}</p>
+</div>
