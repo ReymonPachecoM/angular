@@ -34,4 +34,9 @@ public class PersonaService {
         String estado = persona.getEstado().substring(0, 2).toUpperCase();
         return apellido + nombre + fecha + estado;
     }
+
+	public Persona buscarPorCurp(String curp) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'buscarPorCurp'");
+	}
 }

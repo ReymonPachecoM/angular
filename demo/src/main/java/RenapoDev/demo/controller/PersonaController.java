@@ -1,6 +1,7 @@
 package RenapoDev.demo.controller;
 
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import RenapoDev.demo.model.Persona;
@@ -28,4 +29,15 @@ public class PersonaController {
     public List<Persona> obtenerPersonas() {
         return personaService.obtenerPersonas();
     }
+
+    @GetMapping("/personas/{curp}")
+    public ResponseEntity<Persona> obtenerPersonaPorCurp(@PathVariable String curp) {
+        Persona persona = personaService.buscarPorCurp(curp);
+        if (persona != null) {
+            return ResponseEntity.ok(persona);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+}
+
 }
